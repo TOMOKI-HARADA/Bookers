@@ -1,0 +1,27 @@
+ <h1>BOOKS</h1>
+  <table>
+    <thead></thead>
+    <tr>
+      <th>title</th>
+      <th>Body</th>
+      <th></th>
+    </tr>
+  </tr> <tr>
+  <% @book.each do |book| %>
+  <td><%= link_to book.title, book_path(book) %></td>
+        <td><%= link_to book.body %></td>
+        <% end %>
+        
+</tr>
+
+   </table>
+  
+
+<h2>新規投稿</h2>
+<%= form_with model:@book, url:'/books', local:true do |f| %>
+<h4>title</h4>
+<%= f.text_field :title %>
+<h4>body</h4>
+<%= f.text_area :body %>
+<%= f.submit '投稿' %>
+<% end %>
