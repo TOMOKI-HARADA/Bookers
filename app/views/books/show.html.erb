@@ -1,6 +1,14 @@
-<h1>ようこそbookersへ</h1>
-<p>Bookers では、さまざまな書籍に関するあなたの意見や
+<p><% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div><p></p>
+    <% end %>
 
-印象を共有し交換することができます</p>
 
-<%= link_to 'start', books_path %>
+  <p>タイトル</p>
+  <span><%= @book.title %></span>
+  <p>body</p>
+  <span><%= @book.body %></span>
+  <%= link_to 'back', books_path %>
+ <%= link_to "edit", edit_book_path(@book.id) %>
+

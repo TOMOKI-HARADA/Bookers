@@ -1,21 +1,35 @@
  <h1>BOOKS</h1>
   <table>
-    <thead></thead>
-    <tr>
-      <th>title</th>
-      <th>Body</th>
-      <th></th>
-    </tr>
-  </tr> <tr>
-  <% @book.each do |book| %>
-  <td><%= link_to book.title, book_path(book) %></td>
-        <td><%= link_to book.body %></td>
-        <% end %>
-        
+<thead>
+<tr>
+<th>title</th>
+<th>body</th>
+<th></th>
+</tr>
+</thead>
+
+<tbody>
+<% @books.each do |book| %>
+<tr>
+<td>
+<%= book.title %>
+</td>
+<td>
+<%= book.body %>
+</td>
+<td>
+<%= link_to "show", book_path(book.id) %>
+<%= link_to "edit", edit_book_path(book.id) %>
+<%= link_to "削除", book_path(book.id), method: :delete, "data-confirm" => "本当に削除しますか？"  %>
+</td>
+</tr>
+<% end %>
+</tbody>
+</table>
 </tr>
 
    </table>
-  
+
 
 <h2>新規投稿</h2>
 <%= form_with model:@book, url:'/books', local:true do |f| %>
